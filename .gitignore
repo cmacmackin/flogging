@@ -33,3 +33,4 @@
 *.gcda
 *.gcno
 *.gcov
+tests.x

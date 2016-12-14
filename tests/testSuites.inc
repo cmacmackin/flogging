@@ -1,0 +1,1 @@
+ADD_TEST_SUITE(logging_tests_suite)
