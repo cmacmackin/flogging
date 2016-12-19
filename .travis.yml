@@ -86,6 +86,7 @@ script:
     do
         ${PFUNIT}/bin/pFUnitParser.py $f ${f%.*}.F90
     done
+  - if [ -e tests/driver.F90 ]; then rm tests/driver.F90; fi
   - ln -s ${PFUNIT}/include/driver.F90 tests/
   - FoBiS.py build -mode tests -coverage
   - $(FoBiS.py rule -mode tests -get_output_name)
