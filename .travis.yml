@@ -50,6 +50,7 @@ install:
   - pip install --user --upgrade ghp-import
   - pip install --user --upgrade codecov
   - pip install --user --upgrade FoBiS.py
+  - pip install --user --upgrade pygooglechart
   - |
     if [ ! -d $HOME/pFUnit ]; then
       git clone git://git.code.sf.net/p/pfunit/code $HOME/pFUnit
