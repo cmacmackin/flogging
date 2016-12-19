@@ -13,7 +13,7 @@ ln -s ${PFUNIT}/include/driver.F90 tests/
 mkdir -p tests_build $(FoBiS.py rule -mode tests -get build_dir)
 if FoBiS.py build -mode tests -coverage ; then
     $(FoBiS.py rule -mode tests -get_output_name)
-    gcov $(FoBiS.py rule -mode gnu-static -get build_dir)/$(FoBiS.py rule -mode gnu-static -get obj_dir)/*.gcno -pb
+    gcov $(FoBiS.py rule -mode gnu-static -get build_dir)/$(FoBiS.py rule -mode gnu-static -get obj_dir)/*.gcno -p
 else
     echo "Failed to build tests."
     exit 1
