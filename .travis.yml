@@ -93,6 +93,6 @@ script:
 
 after_success:
   - echo "SUCCESS!"
-  - codecov
+  - codecov --file src/logging.f90
   - ./deploy.sh
 
