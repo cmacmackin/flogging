@@ -80,10 +80,11 @@ install:
 
 script:
   - FoBiS.py build -mode gnu-static -dlib ${LOCAL_LIB} -i ${LOCAL_INC} -coverage
+  - echo ${PFUNIT}
   - |
     for f in tests/*.pf
     do
-        $(PFUNIT)/bin/pFUnitParser.py $f ${f%.*}.F90
+        ${PFUNIT}/bin/pFUnitParser.py $f ${f%.*}.F90
     done
   - ln -s ${PFUNIT}/include/driver.F90 tests/
   - FoBiS.py build -mode tests -coverage
