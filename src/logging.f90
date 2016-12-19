@@ -64,6 +64,7 @@ module logger_mod
     !! the log file.
 
   integer, parameter :: closed_unit = -9999
+  integer, parameter :: infinity = huge(1)
 
   character(len=29), parameter :: default_format = "('[',a,']','[',a,']',"// &
                                                    "*(1x,a))"
@@ -84,13 +85,13 @@ module logger_mod
       !! Unit corresponding to log-file
     character(len=:), allocatable :: logfile
       !! Name of the log-file
-    integer                       :: stderr_threshold = default_stderr_threshold
+    integer                       :: stderr_threshold = infinity
       !! Cutoff for which messages with greater or equal priority will
       !! be written to STDERR.
-    integer                       :: stdout_threshold = default_stdout_threshold
+    integer                       :: stdout_threshold = infinity
       !! Cutoff for which messages with greater or equal priority will
       !! be written to STDOUT.
-    integer                       :: logfile_threshold = default_logfile_threshold
+    integer                       :: logfile_threshold = infinity
       !! Cutoff for which messages with greater or equal priority will
       !! be written to the log-file.
   contains
@@ -143,14 +144,25 @@ contains
       !! Threshold priority, at and above which messages will be
       !! written to the log file. Defaults to `trivia`.
     integer :: flag
-    if (this%fileunit /= closed_unit) close(this%fileunit)
     this%logfile = logfile
     open(newunit=this%fileunit,file=this%logfile,action='write', &
          asynchronous='yes',iostat=flag,status='replace')
     if (flag /= 0) error stop 'Error opening log file.'
-    if (present(stderr_threshold))  this%stderr_threshold = stderr_threshold
-    if (present(stdout_threshold))  this%stdout_threshold = stdout_threshold
-    if (present(logfile_threshold)) this%logfile_threshold = logfile_threshold
+    if (present(stderr_threshold)) then
+      this%stderr_threshold = stderr_threshold
+    else
+      this%stderr_threshold = default_stderr_threshold
+    end if
+    if (present(stdout_threshold)) then
+      this%stdout_threshold = stdout_threshold
+    else
+      this%stdout_threshold = default_stdout_threshold
+    end if
+    if (present(logfile_threshold)) then
+      this%logfile_threshold = logfile_threshold
+    else
+      this%logfile_threshold = default_logfile_threshold
+    end if
   end function constructor
 
   subroutine logger_finalize(this)
@@ -276,15 +288,15 @@ contains
     character(len=*), intent(in) :: message
       !! The information to be written.
     character(len=:), allocatable :: output
-    output = get_designator(priority)//message
     if (priority >= this%stderr_threshold) then
+      output = get_designator(priority)//message
       write(this%stderr,default_format) current_time(), source, output
     else if (priority >= this%stdout_threshold) then
+      output = get_designator(priority)//message
       write(this%stdout,default_format) current_time(), source, output
     end if
-    output = get_designator(priority,.false.)//message
-    if (priority >= this%logfile_threshold .and. &
-        this%fileunit /= closed_unit) then
+    if (priority >= this%logfile_threshold) then
+      output = get_designator(priority,.false.)//message
       write(this%fileunit,default_format) current_time(), source, output
     end if
   end subroutine logger_message
@@ -386,6 +398,9 @@ contains
     if (this%fileunit == closed_unit) return
     close(this%fileunit)
     this%fileunit = closed_unit
+    this%stderr_threshold = infinity
+    this%stdout_threshold = infinity
+    this%logfile_threshold = infinity
   end subroutine logger_destroy
 
   pure function logger_is_open(this)

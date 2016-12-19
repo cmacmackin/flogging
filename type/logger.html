@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Flogging provides an easy-to-use interface for logging events and errors in Fortran applications and libraries. Its use and functionality is similar to that of logging library in Python. It is meant to be used for providing warnings, error messages, debug information, or routine output which should be logged. It is not ideal for all output, such as that used to prompt the user for input.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>logger &ndash; Flogging </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Flogging </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
+            <li><a href="../sourcefile/logging.f90.html">Source File</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/logging.f90.html">Source File</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>logger
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Chris MacMackinc</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> December 2016</li>
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title="<p>100.0% of total for derived types.</p>Including implementation: 93 statements, 100.0% of total for derived types.">21 statements</a>
+     </li> 
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/logging.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/logging.f90.html'>logging.f90</a></li>
+  
+     <li><a href='../module/logger_mod.html'>logger_mod</a></li>
+  
+     <li class="active">logger</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#cons-0">Constructor</a></h3></div>
+  <div id="cons-0" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../type/logger.html#interface-logger">logger</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-0">Finalization Procedures</a></h3></div>
+  <div id="fins-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/logger.html#finalproc-logger_finalize">logger_finalize</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-message">message</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-debug">debug</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-trivia">trivia</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-info">info</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-warning">warning</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-error">error</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-fatal">fatal</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-destroy">destroy</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-is_open">is_open</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/logger.html#src">logger</a>
+  </div>
+</div>
+
+
+  <hr>
+  
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-0">All Derived Types</a></h3></div>
+  <div id="alltypes-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/logger.html">logger</a>
+      
+    </div>
+  </div>
+</div>
+
+
+</div>  
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: logger</h2>
+    
+    <p>An object to handle output of information about the executing
+ program to the terminal and to a log-file.</p>
+    <br>
+    
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#cons-1">Constructor</a></h3></div>
+  <div id="cons-1" class="panel-collapse collapse">
+    <div class="list-group">
+      <a class="list-group-item" href="../type/logger.html#interface-logger">logger</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#fins-1">Finalization Procedures</a></h3></div>
+  <div id="fins-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/logger.html#finalproc-logger_finalize">logger_finalize</a>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-message">message</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-debug">debug</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-trivia">trivia</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-info">info</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-warning">warning</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-error">error</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-fatal">fatal</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-destroy">destroy</a>
+      
+      <a class="list-group-item" href="../type/logger.html#boundprocedure-is_open">is_open</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+  <div class="list-group">
+    <a class="list-group-item" href="../type/logger.html#src">logger</a>
+  </div>
+</div>
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    
+    
+	 <section>
+	 <h2>Constructor</h2>
+	   
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-logger"></span><h3>public interface <a href='../interface/logger.html'>logger</a>
+    
+  </h3></div>
+  
+  <ul class="list-group">
+  
+  
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private function constructor(logfile, stderr_threshold, stdout_threshold, logfile_threshold) result(this)
+    
+    
+	 
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>logfile</strong></td><td><p>Name of the log-file to which output will be written</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>stderr_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to standard error. Defaults to <code>error</code>.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>stdout_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to standard out. Defaults to <code>info</code>.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>logfile_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to the log file. Defaults to <code>trivia</code>.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>type(<a href='../type/logger.html'>logger</a>)
+  </small></h4>
+  
+    
+
+    </li>
+  
+  
+  </ul>
+</div>
+
+	   
+	 </section>
+	 <br>
+    
+    
+    
+    <section>
+    <h2>Finalization Procedures</h2>
+	   
+         
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="finalproc-logger_finalize"></span><h3>final :: <strong>logger_finalize</strong> 
+    </h3></div>
+  <div class="panel-body">
+    
+
+
+    
+  </div>
+  <ul class="list-group">
+     <li class="list-group-item">
+       
+    
+    <h3>
+private subroutine logger_finalize(this)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Closes the log-file of this logger object.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+     </li>
+  </ul>
+</div>
+
+         
+    </section>
+    <br>
+    
+    
+     
+    <section>
+    <h2>Type-Bound Procedures</h2>
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-message"></span><h3>procedure, public :: <strong>message</strong>  => logger_message 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Write a message of a given priority to the appropriate
+ location(s)</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine logger_message(this, source, priority, message)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Write the provided message to STDERR, STDOUT, and/or a log-file,
+ based on its priority level.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>source</strong></td><td><p>The name of the procedure which produced the error</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>priority</strong></td><td><p>The importance of the message, determining where it will be
+ written.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>message</strong></td><td><p>The information to be written.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-debug"></span><h3>procedure, public :: <strong>debug</strong>  => logger_debug 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Write debug information</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine logger_debug(this, source, message)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Writes debug information to STDERR, STDOUT, and/or a log-file.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>source</strong></td><td><p>The name of the procedure which produced the error</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>message</strong></td><td><p>The information to be written.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-trivia"></span><h3>procedure, public :: <strong>trivia</strong>  => logger_trivia 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Write trivial run-time information</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine logger_trivia(this, source, message)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Writes unimportant run-time information to STDERR, STDOUT,
+ and/or a log-file.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>source</strong></td><td><p>The name of the procedure which produced the error</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>message</strong></td><td><p>The information to be written.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-info"></span><h3>procedure, public :: <strong>info</strong>  => logger_info 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Write run-time information</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine logger_info(this, source, message)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Writes run-time information to STDERR, STDOUT, and/or a log-file.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>source</strong></td><td><p>The name of the procedure which produced the error</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>message</strong></td><td><p>The information to be written.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-warning"></span><h3>procedure, public :: <strong>warning</strong>  => logger_warning 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Write warning message</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine logger_warning(this, source, message)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Writes warning information to STDERR, STDOUT, and/or a log-file.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>source</strong></td><td><p>The name of the procedure which produced the error</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>message</strong></td><td><p>The information to be written.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-error"></span><h3>procedure, public :: <strong>error</strong>  => logger_error 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Write error message</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine logger_error(this, source, message)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Writes error information to STDERR, STDOUT, and/or a log-file.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>source</strong></td><td><p>The name of the procedure which produced the error</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>message</strong></td><td><p>The information to be written.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-fatal"></span><h3>procedure, public :: <strong>fatal</strong>  => logger_fatal 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Write notification of fatal error</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine logger_fatal(this, source, message)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Writes fatal information to STDERR, STDOUT, and/or a log-file.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>source</strong></td><td><p>The name of the procedure which produced the error</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>message</strong></td><td><p>The information to be written.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-destroy"></span><h3>procedure, public :: <strong>destroy</strong>  => logger_destroy 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Closes the log-file</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private subroutine logger_destroy(this)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Closes the log-file of this logger object. Destroys only the
+ logger object, <em>not</em> the output.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-is_open"></span><h3>procedure, public :: <strong>is_open</strong>  => logger_is_open 
+    
+  </h3></div>
+  
+  <div class="panel-body">
+    
+
+
+    <p>Return <code>.true.</code> if the log-file is open for writing</p>
+  </div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+    
+    <h3>
+private pure function logger_is_open(this)
+    
+    
+	 
+</h3>
+    
+
+
+
+<p>Returns <code>.true.</code> if the log-file is open for writing.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/logger.html'>logger</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>this</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+    </section>
+    
+    
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span>  <span class="k">type</span><span class="p">,</span> <span class="k">public</span> <span class="kd">::</span> <span class="n">logger</span>
+    <span class="c">!* Author: Chris MacMackinc</span>
+    <span class="c">!  Date: December 2016</span>
+    <span class="c">!</span>
+    <span class="c">! An object to handle output of information about the executing</span>
+    <span class="c">! program to the terminal and to a log-file.</span>
+    <span class="c">! </span>
+    <span class="k">private</span>
+<span class="k">    </span><span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">stdout</span> <span class="o">=</span> <span class="n">output_unit</span>
+      <span class="c">!! Unit corresponding to STDOUT</span>
+    <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">error_unit</span>
+      <span class="c">!! Unit corresponding to STDERR</span>
+    <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">fileunit</span> <span class="o">=</span> <span class="n">closed_unit</span>
+      <span class="c">!! Unit corresponding to log-file</span>
+    <span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span> <span class="k">allocatable</span> <span class="kd">::</span> <span class="n">logfile</span>
+      <span class="c">!! Name of the log-file</span>
+    <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">stderr_threshold</span> <span class="o">=</span> <span class="n">infinity</span>
+      <span class="c">!! Cutoff for which messages with greater or equal priority will</span>
+      <span class="c">!! be written to STDERR.</span>
+    <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">stdout_threshold</span> <span class="o">=</span> <span class="n">infinity</span>
+      <span class="c">!! Cutoff for which messages with greater or equal priority will</span>
+      <span class="c">!! be written to STDOUT.</span>
+    <span class="kt">integer</span>                       <span class="kd">::</span> <span class="n">logfile_threshold</span> <span class="o">=</span> <span class="n">infinity</span>
+      <span class="c">!! Cutoff for which messages with greater or equal priority will</span>
+      <span class="c">!! be written to the log-file.</span>
+  <span class="k">contains</span>
+<span class="k">    procedure</span> <span class="kd">::</span> <span class="n">message</span> <span class="o">=&gt;</span> <span class="n">logger_message</span>
+      <span class="c">!! Write a message of a given priority to the appropriate</span>
+      <span class="c">!! location(s)</span>
+    <span class="k">procedure</span> <span class="kd">::</span> <span class="n">debug</span> <span class="o">=&gt;</span> <span class="n">logger_debug</span>
+      <span class="c">!! Write debug information</span>
+    <span class="k">procedure</span> <span class="kd">::</span> <span class="n">trivia</span> <span class="o">=&gt;</span> <span class="n">logger_trivia</span>
+      <span class="c">!! Write trivial run-time information</span>
+    <span class="k">procedure</span> <span class="kd">::</span> <span class="n">info</span> <span class="o">=&gt;</span> <span class="n">logger_info</span>
+      <span class="c">!! Write run-time information</span>
+    <span class="k">procedure</span> <span class="kd">::</span> <span class="n">warning</span> <span class="o">=&gt;</span> <span class="n">logger_warning</span>
+      <span class="c">!! Write warning message</span>
+    <span class="k">procedure</span> <span class="kd">::</span> <span class="n">error</span> <span class="o">=&gt;</span> <span class="n">logger_error</span>
+      <span class="c">!! Write error message</span>
+    <span class="k">procedure</span> <span class="kd">::</span> <span class="n">fatal</span> <span class="o">=&gt;</span> <span class="n">logger_fatal</span>
+      <span class="c">!! Write notification of fatal error</span>
+    <span class="k">procedure</span> <span class="kd">::</span> <span class="n">destroy</span> <span class="o">=&gt;</span> <span class="n">logger_destroy</span>
+      <span class="c">!! Closes the log-file</span>
+    <span class="k">procedure</span> <span class="kd">::</span> <span class="n">is_open</span> <span class="o">=&gt;</span> <span class="n">logger_is_open</span>
+      <span class="c">!! Return `.true.` if the log-file is open for writing</span>
+    <span class="k">final</span> <span class="kd">::</span> <span class="n">logger_finalize</span>
+  <span class="k">end type </span><span class="n">logger</span>
+</pre></div>
+
+    </section>
+    
+    
+    </div>
+  </div>
+
+  <section class="visible-xs visible-sm hidden-md">
+    <hr>
+    
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#alltypes-1">All Derived Types</a></h3></div>
+  <div id="alltypes-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/logger.html">logger</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2016 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Flogging was developed by Chris MacMackin</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

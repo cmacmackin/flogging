@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Flogging provides an easy-to-use interface for logging events and errors in Fortran applications and libraries. Its use and functionality is similar to that of logging library in Python. It is meant to be used for providing warnings, error messages, debug information, or routine output which should be logged. It is not ideal for all output, such as that used to prompt the user for input.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>logger_mod &ndash; Flogging</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Flogging </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
+            <li><a href="../sourcefile/logging.f90.html">Source File</a></li>
+				
+				
+            <li><a href="../lists/modules.html">Modules</a></li>
+				
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="../lists/types.html">Derived Types</a></li>
+				
+				
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../sourcefile/logging.f90.html">Source File</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>logger_mod 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     <li><i class="fa fa-pencil"></i> Christopher MacMackin</li>
+     
+     
+    <li><i class="fa fa-calendar-o"></i> December 2016</li>
+     
+     
+    <li><i class="fa fa-legal"></i> LGPLv3</li>
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+	  data-placement="bottom" data-html="true"
+	  title="100.0% of total for modules and submodules.">192 statements</a>
+     </li> 
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/logging.f90"> Source File</a></li>
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+     <li><a href='../sourcefile/logging.f90.html'>logging.f90</a></li>
+  
+     <li class="active">logger_mod</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-debug%7E2">debug</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-trivia%7E2">trivia</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-info%7E2">info</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-warning%7E2">warning</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-error%7E2">error</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-fatal%7E2">fatal</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-master_logger">master_logger</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-0">Interfaces</a></h3></div>
+  <div id="inters-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/logger_mod.html#interface-logger">logger</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
+  <div id="types-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/logger_mod.html#type-logger">logger</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/logger_mod.html#proc-logger_init">logger_init</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+  <hr>
+  
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-0">All Modules</a></h3></div>
+  <div id="allmods-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/logger_mod.html">logger_mod</a>
+      
+    </div>
+  </div>
+</div>
+
+
+</div>  
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      
+    
+  
+    <ul class="list-inline">
+      <li><h4>Uses:</h4></li>
+      
+      <li><a href="https://software.intel.com/en-us/node/511041">iso_fortran_env</a></li>
+      
+      <li>face</li>
+      
+    </ul>
+    
+    
+
+    
+    <p>Provides routines for printing different types of messages to
+ standard out, standard error, and/or a log file.</p>
+    <br>
+    
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-debug%7E2">debug</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-trivia%7E2">trivia</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-info%7E2">info</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-warning%7E2">warning</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-error%7E2">error</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-fatal%7E2">fatal</a>
+      
+      <a class="list-group-item" href="../module/logger_mod.html#variable-master_logger">master_logger</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-1">Interfaces</a></h3></div>
+  <div id="inters-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/logger_mod.html#interface-logger">logger</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
+  <div id="types-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/logger_mod.html#type-logger">logger</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/logger_mod.html#proc-logger_init">logger_init</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-debug%7E2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>debug</strong></td><td> =</td><td>10</td><td><p>Priority level for output only useful for debugging</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-trivia%7E2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>trivia</strong></td><td> =</td><td>20</td><td><p>Priority level for output which may be useful but is very
+ detailed or not especially important.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-info%7E2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>info</strong></td><td> =</td><td>30</td><td><p>Priority level for output generated by the normal execution of
+ the program.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-warning%7E2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>warning</strong></td><td> =</td><td>40</td><td><p>Priority level for output which indicates some part of the
+ program is not behaving as it ideally should.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-error%7E2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>error</strong></td><td> =</td><td>50</td><td><p>Priority level for output which indicates an error has
+ occurred which will affect the continued execution of the
+ program.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fatal%7E2"></span>integer,</td>
+  
+  <td>public,</td>
+  <td>parameter</td><td>::</td>
+  <td><strong>fatal</strong></td><td> =</td><td>60</td><td><p>Priority level for output which notifies the user than a
+ serious error has occured which will result in the immediate
+ termination of the program.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-master_logger"></span>type(<a href='../type/logger.html'>logger</a>),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>master_logger</strong></td><td></td><td></td><td><p>The main logger object for a program to use. Must be
+ initialised in the main program with a call to <a href="../proc/logger_init.html">logger_init</a>.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    <section>
+	 <h2>Interfaces</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-logger"></span><h3>public interface <a href='../interface/logger.html'>logger</a>
+    
+  </h3></div>
+  
+  <ul class="list-group">
+  
+  
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private function constructor(logfile, stderr_threshold, stdout_threshold, logfile_threshold) result(this)
+    
+    
+	 
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>logfile</strong></td><td><p>Name of the log-file to which output will be written</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>stderr_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to standard error. Defaults to <code>error</code>.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>stdout_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to standard out. Defaults to <code>info</code>.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>logfile_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to the log file. Defaults to <code>trivia</code>.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>type(<a href='../type/logger.html'>logger</a>)
+  </small></h4>
+  
+    
+
+    </li>
+  
+  
+  </ul>
+</div>
+
+    
+    </section>
+	<br>
+    
+
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+	 
+	   
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-logger"></span><h3>type, public :: <a href='../type/logger.html'>logger</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+    
+    <p>An object to handle output of information about the executing
+ program to the terminal and to a log-file.</p>
+    
+     
+     
+     <h4>Constructor</h4>
+       
+         
+       
+       <table class="table table-striped varlist">
+      <tbody>
+        
+             
+             
+             
+             <tr><td>private  function <strong>constructor</strong>(logfile, stderr_threshold, stdout_threshold, logfile_threshold)</td><td></td></tr>
+             
+        
+       </tbody>
+       </table>
+     
+     
+     <h4>Finalizations Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>final :: <strong>logger_finalize</strong></h3></td><td></td></tr>
+      
+       </tbody>
+       </table>  
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-message'>message</a></strong>  => logger_message </td>
+       <td><p>Write a message of a given priority to the appropriate
+ location(s)</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-debug'>debug</a></strong>  => logger_debug </td>
+       <td><p>Write debug information</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-trivia'>trivia</a></strong>  => logger_trivia </td>
+       <td><p>Write trivial run-time information</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-info'>info</a></strong>  => logger_info </td>
+       <td><p>Write run-time information</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-warning'>warning</a></strong>  => logger_warning </td>
+       <td><p>Write warning message</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-error'>error</a></strong>  => logger_error </td>
+       <td><p>Write error message</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-fatal'>fatal</a></strong>  => logger_fatal </td>
+       <td><p>Write notification of fatal error</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-destroy'>destroy</a></strong>  => logger_destroy </td>
+       <td><p>Closes the log-file</p></td></tr>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/logger.html#boundprocedure-is_open'>is_open</a></strong>  => logger_is_open </td>
+       <td><p>Return <code>.true.</code> if the log-file is open for writing</p></td></tr>
+      
+       </tbody>
+       </table>
+     
+  </div>
+</div>
+
+     
+    </section>
+	<br>
+    
+    
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-logger_init"></span><h3>
+public subroutine <a href='../proc/logger_init.html'>logger_init</a>(logfile, stderr_threshold, stdout_threshold, logfile_threshold)
+    
+    
+	 
+</h3></div>
+  <div class="panel-body">
+       
+    
+
+
+
+
+
+  <dl class="dl-horizontal">
+    
+    <dt>Author</dt><dd>Chris MacMackin</dd>
+    
+    
+    <dt>Date</dt><dd>December 2016</dd>
+    
+    
+    
+    
+  </dl>
+
+
+
+<p>Initalises the master logging object. This subroutine must be
+ called before the master logger is used. It should only be
+ called once.</p>
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>logfile</strong></td><td><p>Name of the log-file to which output will be written</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>stderr_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to standard error. Defaults to <code>error</code>.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>stdout_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to standard out. Defaults to <code>info</code>.</p></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>logfile_threshold</strong></td><td><p>Threshold priority, at and above which messages will be
+ written to the log file. Defaults to <code>trivia</code>.</p></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  <section class="visible-xs visible-sm hidden-md">
+    <hr>
+    
+
+<div class="panel panel-default">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#allmods-1">All Modules</a></h3></div>
+  <div id="allmods-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/logger_mod.html">logger_mod</a>
+      
+    </div>
+  </div>
+</div>
+
+
+  </section>
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2016 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Flogging was developed by Chris MacMackin</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>

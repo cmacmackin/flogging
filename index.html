@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	 <meta name="description" content="Flogging provides an easy-to-use interface for logging events and errors in Fortran applications and libraries. Its use and functionality is similar to that of logging library in Python. It is meant to be used for providing warnings, error messages, debug information, or routine output which should be logged. It is not ideal for all output, such as that used to prompt the user for input.">
+    
+    <meta name="author" content="Chris MacMackin" >
+    <link rel="icon" href="./favicon.png">
+
+    <title> Flogging </title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/pygments.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/local.css" rel="stylesheet">
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="./js/jquery-2.1.3.min.js"></script>
+    <script src="./js/svg-pan-zoom.min.js"></script>
+
+    
+    <script src="./tipuesearch/tipuesearch_content.js"></script>
+    <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
+    <script src="./tipuesearch/tipuesearch_set.js"></script>
+    <script src="./tipuesearch/tipuesearch.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">Flogging </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+				
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+		 aria-expanded="false">Contents <span class="caret"></span></a>
+	      <ul class="dropdown-menu">
+              
+            <li><a href="./sourcefile/logging.f90.html">Source File</a></li>
+				
+				
+            <li><a href="./lists/modules.html">Modules</a></li>
+				
+            
+                                
+            <li><a href="./lists/procedures.html">Procedures</a></li>
+				
+								
+            <li><a href="./lists/types.html">Derived Types</a></li>
+				
+				
+            </ul>
+            </li>
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./sourcefile/logging.f90.html">Source File</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/procedures.html">Procedures</a></li>
+
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="./lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="./search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <p>Flogging provides an easy-to-use interface for logging events and
+errors in Fortran applications and libraries. Its use and
+functionality is similar to that of
+<a href="https://docs.python.org/2/library/logging.html">logging</a> library in
+Python. It is meant to be used for providing warnings, error messages,
+debug information, or routine output which should be logged. It is not
+ideal for all output, such as that used to prompt the user for input.</p>
+        	 
+	<p> Find us on&hellip;</p>
+        <p>
+        	 
+          <a class="btn btn-lg btn-primary" href="https://github.com/cmacmackin/flogging" role="button">GitHub</a>
+			 
+			 
+			 
+			 
+	         
+			 
+          <a class="btn btn-lg btn-danger" style="float:right" href="https://github.com/cmacmackin/flogging/archive/v1.0.0.tar.gz" role="button">Download the Source</a>
+			 
+        </p>
+      </div>
+
+      <div class="row" id='text'>
+		  
+        <div class="col-md-8">
+		  
+          <h1>Flogging</h1>
+          <h1>Flogging: Fortran Logging Library</h1>
+<p><a href="./LICENSE"><img alt="GitHub license" src="https://img.shields.io/badge/license-LGPL_v3-blue.svg"></a>
+<a href="https://github.com/cmacmackin/flogging/releases"><img alt="GitHub release" src="https://img.shields.io/github/release/cmacmackin/flogging.svg"></a>
+<a href="https://travis-ci.org/cmacmackin/flogging"><img alt="Travis" src="https://img.shields.io/travis/cmacmackin/flogging.svg"></a>
+<a href="https://codecov.io/gh/cmacmackin/flogging"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/cmacmackin/flogging.svg"></a></p>
+<p>Flogging provides an easy-to-use interface for logging events and
+errors in Fortran applications and libraries. Its use and
+functionality is similar to that of
+<a href="https://docs.python.org/2/library/logging.html">logging</a> library in
+Python. It is meant to be used for providing warnings, error messages,
+debug information, or routine output which should be logged. It is not
+ideal for all output, such as that used to prompt the user for input.</p>
+<h2>Documentation</h2>
+<p>Flogger provides a module called <code>logger_mod</code>, which implements an
+object called a <code>logger</code>. This contains methods for outputting the
+following types of messages:</p>
+<ul>
+<li><strong>debug:</strong> Information which will only be useful for debugging, such
+  as announcing when entering and exiting a procedure</li>
+<li><strong>trivia:</strong> Information about normal operation which is detailed or
+  obscure and thus would not usually be of interest</li>
+<li><strong>info:</strong> Information about the normal operation of the program</li>
+<li><strong>warning:</strong> Information produced when something happens which
+  results in suboptimal completion of the program</li>
+<li><strong>error:</strong> Information about something which will result in
+  incorrect completion of the program</li>
+<li><strong>fatal:</strong> Information that an event has occurred which will result
+  in immediate termination of the program, without completion</li>
+</ul>
+<p>Each type of message is assigned a priority, ranging from 10 (debug)
+to 60 (fatal). The priority value for each type of message is
+specified in a parameter of the same name. Depending on the priority
+of the message, it may be printed to a log file, standard out, and/or
+standard error.</p>
+<p>While users can instantiate a logger instance and use that, it is
+recommended that they use the <code>master_logger</code> object provided in the
+<code>logger_mod</code> module. This way, multiple libraries can make calls to
+the same logger and all information will end up in the same log file.</p>
+<h2>Usage</h2>
+<p>Before using the master logger, <code>logger_init</code> must be called to set
+the logging file and what priority messages will be printed. The
+call signature is</p>
+<div class="codehilite"><pre><span></span><span class="k">subroutine </span><span class="n">logger_init</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="n">stderr_threshold</span><span class="p">,</span> <span class="n">stdout_threshold</span><span class="p">,</span> <span class="p">&amp;</span>
+                       <span class="n">logfile_threshold</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Arguments are:</p>
+<ul>
+<li><strong>logfile:</strong> A character string containing the name of the file to
+  which output will be written</li>
+<li><strong>stderr_threshold:</strong> (Optional) An integer which specifies the
+  minimum priority a message must have in order to be printed to
+  standard error. Defaults to <em>error</em>.</li>
+<li><strong>stdout_threshold:</strong> (Optional) An integer which specifies the
+  minimum priority a message must have in order to be printed to
+  standard out. Defaults to <em>info</em>.</li>
+<li><strong>logfile_threshold:</strong> (Optional) An integer which specifies the
+  minimum priority a message must have in order to be printed to the
+  log file. Defaults to <em>trivia</em>.</li>
+</ul>
+<p>A message is logged by calling the type-bound subroutine with the same
+name as the desired message type. These subroutines take the following
+arguments:</p>
+<ul>
+<li><strong>source</strong>: A character string specifying the name of the
+  program or procedure in which thee logger is being called.</li>
+<li><strong>message</strong>: A character string containing the message to be
+  printed.</li>
+</ul>
+<h3>Example</h3>
+<div class="codehilite"><pre><span></span><span class="k">program </span><span class="n">logging_example</span>
+  <span class="k">use </span><span class="n">logger_mod</span><span class="p">,</span> <span class="n">only</span><span class="p">:</span> <span class="n">logger_init</span><span class="p">,</span> <span class="n">logger</span> <span class="o">=&gt;</span> <span class="n">master_logger</span>
+
+  <span class="c">! Initialise the logger prior to use</span>
+  <span class="k">call </span><span class="n">logger_init</span><span class="p">()</span>
+
+  <span class="c">! Write some debugging information</span>
+  <span class="k">call </span><span class="n">logger</span><span class="p">%</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;logger_example&#39;</span><span class="p">,</span><span class="s1">&#39;Starting program logger_example&#39;</span><span class="p">)</span>
+
+  <span class="c">! Perform some calculation</span>
+  <span class="c">! ...</span>
+  <span class="k">call </span><span class="n">logger</span><span class="p">%</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;logger_example&#39;</span><span class="p">,</span><span class="s1">&#39;Found result of calculation&#39;</span><span class="p">)</span>
+
+  <span class="c">! Perform another calculation</span>
+  <span class="c">! ...</span>
+  <span class="c">! Oh no, an error has occurred</span>
+  <span class="k">call </span><span class="n">logger</span><span class="p">%</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;logger_example&#39;</span><span class="p">,</span><span class="s1">&#39;Calculation failed due to error&#39;</span><span class="p">)</span>
+
+  <span class="k">call </span><span class="n">logger</span><span class="p">%</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;logger_example&#39;</span><span class="p">,</span><span class="s1">&#39;Ending program logger_example&#39;</span><span class="p">)</span>
+<span class="k">end program </span><span class="n">logging_example</span>
+</pre></div>
+
+
+<p>This produces the following output to the screen.</p>
+<p><img alt="Output from the example program above" src="https://github.com/cmacmackin/flogging/blob/master/sample-output.png">
+Note that debug information is not displayed, as its priority falls
+below the default threshold for this.</p>
+<h3>API</h3>
+<p>Detailed <a href="https://cmacmackin.github.io/flogging">API documentation</a> is
+available in the Github pages of this repository and can be generated
+locally using the <a href="https://github.com/cmacmackin/ford">FORD</a> tool. </p>
+<h2>Installation</h2>
+<p>The easiest way to install Flogging is via the
+<a href="https://github.com/Fortran-FOSS-Programmers/FLATPack">FLATPack</a>
+repository for the <a href="https://spack.readthedocs.io/en/latest/">Spack</a>
+package manager. It can be installed with the command</p>
+<div class="codehilite"><pre><span></span>spack install flogging
+</pre></div>
+
+
+<p>If compiling manually, you will need to have Stefano Zaghi's
+<a href="https://github.com/szaghi/FACE">FACE</a> library installed. It is
+recommended that you compile Flogging using the
+<a href="https://github.com/szaghi/FoBiS">FoBiS.py</a> tool, 
+which can be installed from
+<a href="https://pypi.python.org/pypi/FoBiS.py/">PyPI</a>. The provided <code>fobos</code>
+configuration file allows the library to be compiled with the command</p>
+<div class="codehilite"><pre><span></span>FoBiS.py build -mode COMPILER-LIBTYPE -dlib FACELOCATION -i FACEMODLOCATION
+</pre></div>
+
+
+<p>where <code>COMPILER</code> is either <code>gnu</code> or <code>intel</code>, <code>LIBTYPE</code> is either
+<code>static</code> or <code>shared</code>, <code>FACELOCATION</code> is the path to the directory
+containing the compiled FACE library in either static or shared
+format, and <code>FACEMODLOCATION</code> is the path to the directory containing
+the <code>.mod</code> file for FACE.</p>
+<p>A makefile is provided with this repository, but is not officially
+supported. It has been configured for the developer's computer and
+will not work elsewhere without modification.</p>
+<h2>License</h2>
+<p>FIAT is licensed under the GNU Lesser General Public License (LGPL) v3.0 or
+later. The terms are provided in the file <code>LICENSE</code>. The LGPL make reference
+to the GNU General Public License (GPL), which is provided in the file <code>GPL</code>.
+In brief, the LGPL allows this library to be linked to software under any
+license (with a few, minor, restrictions). However, should a modified version
+of the <em>library itself</em> be released, it must be licensed under the terms of
+the LGPL or GPL.</p>
+        </div>
+		  
+        <div class="col-md-4">
+	  <div class="well">
+          <h2>Developer Info</h2>
+          <h4>Chris MacMackin</h4>
+          
+          <p>I am a graduate student at the University of Oxford, studying the melting and evolution of ice shelves. I enjoy programming, with my favourite languages being Fortran (for numerical work) and Python (for scripting and everything else).</p>
+			   
+            <div class="text-center"><div class="btn-group" role="group">
+              
+              <a class="btn btn-lg btn-primary" href="mailto:cmacmackin@gmail.com"><i class="fa fa-envelope fa-lg"></i></a>
+              
+              
+             <a class="btn btn-lg btn-primary" href="https://cmacmackin.github.io"><i class="fa fa-globe fa-lg"></i></a>
+              
+              
+              <a class="btn btn-lg btn-primary" href="https://github.com/cmacmackin"><i class="fa fa-github fa-lg"></i></a>
+				  
+				  
+              
+              
+              
+              
+            </div></div>
+            
+       </div>
+       </div>
+       
+      </div>
+      
+      
+      
+      
+		
+      <div class="row">
+        <div class="col-xs-6 col-sm-3">
+              <h3>Source Files</h3>
+              <ul>
+                
+                  
+                    <li><a href='./sourcefile/logging.f90.html'>logging.f90</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Modules</h3>
+              <ul>
+                
+                  
+                    <li><a href='./module/logger_mod.html'>logger_mod</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Procedures</h3>
+              <ul>
+                
+                  
+                    <li><a href='./interface/logger.html'>logger</a></li>
+                  
+                
+                  
+                    <li><a href='./proc/logger_init.html'>logger_init</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+          
+		  <div class="col-xs-6 col-sm-3">
+              <h3>Derived Types</h3>
+              <ul>
+                
+                  
+                    <li><a href='./type/logger.html'>logger</a></li>
+                  
+                
+              </ul>
+          </div>
+          
+      </div>
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2016 </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Flogging was developed by Chris MacMackin</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="./js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js'],
+        'HTML-CSS': { 
+           styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: '#000000 ! important'} }
+        }
+      });
+    </script>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </body>
+</html>
