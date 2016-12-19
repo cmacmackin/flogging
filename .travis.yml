@@ -75,7 +75,7 @@ install:
     fi
   - FoBiS.py build -mode face-static-gnu
   - cp `FoBiS.py rule -mode face-static-gnu -get_output_name` $LOCAL_LIB
-  - cp `FoBiS.py rule -mode face-static-gnue -get build_dir`/mod/face.mod $LOCAL_INC
+  - cp `FoBiS.py rule -mode face-static-gnu -get build_dir`/mod/face.mod $LOCAL_INC
   - cd -
 
 script:
