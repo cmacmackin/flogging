@@ -1,5 +1,8 @@
 # Flogging: Fortran Logging Library
 [![GitHub license](https://img.shields.io/badge/license-LGPL_v3-blue.svg)](./LICENSE)
+[![GitHub release](https://img.shields.io/github/release/cmacmackin/flogging.svg)](https://github.com/cmacmackin/flogging/releases)
+[![Travis](https://img.shields.io/travis/cmacmackin/flogging.svg)](https://travis-ci.org/cmacmackin/flogging)
+[![Codecov](https://img.shields.io/codecov/c/github/cmacmackin/flogging.svg)](https://codecov.io/gh/cmacmackin/flogging)
 
 Flogging provides an easy-to-use interface for logging events and
 errors in Fortran applications and libraries. Its use and

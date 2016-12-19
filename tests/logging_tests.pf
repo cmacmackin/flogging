@@ -42,7 +42,7 @@ contains
 
   subroutine setup(this)
     class(log_test), intent(inout) :: this
-    this%nonmaster_log = logger(this%nonmaster_file, 1000, 0, this%threshold)
+    this%nonmaster_log = logger(this%nonmaster_file, error, 0, this%threshold)
     this%threshold_log = logger(this%threshold_file, 1000, 1000, this%threshold)
     call logger_init(this%master_file, 1000, 1000, 0)
   end subroutine setup
@@ -69,9 +69,11 @@ contains
     ie = 24 + len(src) - 1
     @assertEqual(src,line(is:ie),message='Incorrect message source printed to file.')
     is = ie + 4
+    if (len(msg_type) == 0) is = is - 1
     ie = is + len(msg_type) - 1
     @assertEqual(msg_type,line(is:ie),message='Incorrect message type printed to file.')
     is = ie + 3
+    if (len(msg_type) == 0) is = is - 2
     ie = is + len(msg)
     @assertEqual(msg,line(is:ie),message='Incorrect '//msg_type//' message printed to file.')
   end subroutine test_output
@@ -91,6 +93,34 @@ contains
     end if
   end subroutine test_threshold
 
+  @Test
+  subroutine test_constructor(this)
+    class(log_test), intent(inout) :: this
+    call this%nonmaster_log%destroy()
+    this%nonmaster_log = logger(this%nonmaster_file,1)
+    this%nonmaster_log = logger('randon_file_name.txt',1,1)
+    this%nonmaster_log = logger('randon_file_name2.txt',1,logfile_threshold=1)
+    this%nonmaster_log = logger('randon_file_name3.txt',1,1,1)
+    this%nonmaster_log = logger('randon_file_name4.txt',stdout_threshold=1)
+    this%nonmaster_log = logger('randon_file_name5.txt',stdout_threshold=1, &
+                                logfile_threshold=1)
+    this%nonmaster_log = logger('randon_file_name6.txt',logfile_threshold=1)
+  end subroutine test_constructor
+
+  @Test
+  subroutine test_priority_1(this)
+    class(log_test), intent(inout) :: this
+    character(len=10), parameter :: src = 'test_priority_1'
+    character(len=23), parameter :: msg = 'This is a message with priority 1.'
+    call master_logger%message(src,1,msg)
+    call master_logger%destroy()
+    call test_output(this%master_file,'',src,msg)
+    call this%threshold_log%message(src, 1, msg)
+    call this%threshold_log%destroy()
+    @assertTrue(1<this%threshold,message='this%threshold too low to be useful.')
+    call test_threshold(1,this%threshold,this%threshold_file,'',src,msg)
+  end subroutine test_priority_1
+  
   @Test
   subroutine test_debug(this)
     class(log_test), intent(inout) :: this
@@ -175,6 +205,7 @@ contains
     @assertTrue(this%nonmaster_log%is_open(),message='Open file claiming to be closed.')
     call this%nonmaster_log%destroy()
     @assertFalse(this%nonmaster_log%is_open(),message='Closed file claiming to be open.')
+    call this%nonmaster_log%info('test_destroy','This should not be printed.')
   end subroutine test_destroy
 
   @Test

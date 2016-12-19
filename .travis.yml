@@ -79,17 +79,7 @@ install:
   - cd -
 
 script:
-  - FoBiS.py build -mode gnu-static -dlib ${LOCAL_LIB} -i ${LOCAL_INC} -coverage
-  - echo ${PFUNIT}
-  - |
-    for f in tests/*.pf
-    do
-        ${PFUNIT}/bin/pFUnitParser.py $f ${f%.*}.F90
-    done
-  - if [ -e tests/driver.F90 ]; then rm tests/driver.F90; fi
-  - ln -s ${PFUNIT}/include/driver.F90 tests/
-  - FoBiS.py build -mode tests -coverage
-  - $(FoBiS.py rule -mode tests -get_output_name)
+  - ./buildtests.sh
 
 after_success:
   - echo "SUCCESS!"

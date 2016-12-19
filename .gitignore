@@ -39,3 +39,6 @@ doc/
 build/
 tests_build/
 outputfile.log
+randon_file_name*.txt
+tests/driver.F90
+tests/logging_tests.F90
