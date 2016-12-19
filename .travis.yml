@@ -67,7 +67,7 @@ install:
   - |
     if [ ! -d $HOME/face ]; then
       git clone https://github.com/szaghi/FACE $HOME/face
-      cd $HOME/pFUnit
+      cd $HOME/face
     else
       cd $HOME/face
       git pull
