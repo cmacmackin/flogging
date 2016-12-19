@@ -9,7 +9,7 @@ env:
   global:
     - GH_REF: github.com/Fortran-FOSS-Programmers/flogging
     - ENCRYPTION_LABEL: "59525d4507cc"
-    - COMMIT_AUTHOR_EMAL: "cmacmackin@gmail.com
+    - COMMIT_AUTHOR_EMAL: "cmacmackin@gmail.com"
 
 addons:
   apt:
@@ -82,7 +82,7 @@ script:
     done
   - ln -s ${PFUNIT}/include/driver.F90 tests/
   - FoBiS.py build -mode tests -coverage
-  - `FoBiS.py rule -mode tests -get_output_name`
+  - $(FoBiS.py rule -mode tests -get_output_name)
 
 after_success:
   - echo "SUCCESS!"
