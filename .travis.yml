@@ -9,7 +9,7 @@ env:
   global:
     - GH_REF: github.com/Fortran-FOSS-Programmers/flogging
     - ENCRYPTION_LABEL: "59525d4507cc"
-    - COMMIT_AUTHOR_EMAL: "cmacmackin@gmail.com"
+    - COMMIT_AUTHOR_EMAIL: "cmacmackin@gmail.com"
 
 addons:
   apt:
@@ -93,6 +93,7 @@ script:
 
 after_success:
   - echo "SUCCESS!"
-  - codecov --file src/logging.f90
+  - gcov $(FoBiS.py rule -mode gnu-static -get build_dir)/$(FoBiS.py rule -mode gnu-static -get obj_dir)/*.gcno -pb
+  - codecov -X gcov
   - ./deploy.sh
 
