@@ -35,6 +35,10 @@ install:
   - export LOCAL_LIB=$LOCAL_ROOT/lib
   - export LOCAL_INC=$LOCAL_ROOT/include
   - export PATH=$LOCAL_BIN:/usr/local/bin:/usr/bin:$PATH
+  - mkdir -p $LOCAL_ROOT
+  - mkdir -p $LOCAL_BIN
+  - mkdir -p $LOCAL_LIB
+  - mkdir -p $LOCAL_INC
   - if [ ! -d $HOME/venv ]; then virtualenv $HOME/venv; fi
   - if [ -e $LOCAL_BIN/gcov ]; then rm $LOCAL_BIN/gcov; fi
   - ln -s `which gcov-5` $LOCAL_BIN/gcov
