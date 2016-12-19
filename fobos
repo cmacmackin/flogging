@@ -1,0 +1,77 @@
+[modes]
+modes = gnu-shared gnu-static intel-shared intel-static tests
+
+[common-variables]
+$CFLAGS_GNU = -c -Ofast
+$LFLAGS_GNU = -Ofast
+$CFLAGS_GNU_SHARED = -fPIC
+$LFLAGS_GNU_SHARED = -shared
+$CFLAGS_INTEL = -c -fast
+$LFLAGS_INTEL = -fast
+$CFLAGS_INTEL_SHARED = -fpic
+$LFLAGS_INTEL_SHARED = -shared
+$STATIC_LIB = libflogging.a
+$SHARED_LIB = libflogging.so
+
+[gnu-shared]
+template = template-build
+help = Compile to a shared library using gfortran
+compiler = gnu
+mklib = shared
+cflags = $CFLAGS_GNU $CFLAGS_GNU_SHARED
+lflags = $LFLAGS_GNU $LFLAGS_GNU_SHARED
+output = libflogging.so
+
+[gnu-static]
+template = template-build
+help = Compile to a static library using gfortran
+compiler = gnu
+mklib = static
+cflags = $CFLAGS_GNU $CFLAGS_GNU_STATIC
+lflags = $LFLAGS_GNU $LFLAGS_GNU_STATIC
+output = libflogging.a
+
+[intel-shared]
+template = template-build
+help = Compile to a shared library using ifort
+compiler = intel
+mklib = shared
+cflags = $CFLAGS_INTEL $CFLAGS_INTEL_SHARED
+lflags = $LFLAGS_INTEL $LFLAGS_INTEL_SHARED
+output = libflogging.so
+
+[intel-static]
+template = template-build
+help = Compile to a static library using ifort
+compiler = intel
+mklib = static
+cflags = $CFLAGS_INTEL $CFLAGS_INTEL_STATIC
+lflags = $LFLAGS_INTEL $LFLAGS_INTEL_STATIC
+output = libflogging.a
+
+[tests]
+help = Builds the unit tests. Not guaranteed to work.
+compiler = gnu
+src = ./tests
+build_dir = ./tests_build
+libs = ./build/libflogging.a
+include = ./build/include ${PFUNIT}/mod
+lib_dir = ${PFUNIT}/lib ${LOCAL_ROOT}/lib
+ext_libs = pfunit face
+target = driver.F90
+output = tests
+colors = True
+
+[template-build]
+src = ./src
+build_dir = ./build
+obj_dir = obj
+mod_dir = include
+ext_libs = face
+target = logging.f90
+colors = True
+cflags_heritage = True
+
+[rule-gcov]
+help = Generate coverage information
+rule_1 = gcov ./build/obj/*.gcno -pb

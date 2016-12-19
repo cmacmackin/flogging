@@ -186,7 +186,6 @@ contains
   @Test
   subroutine test_colours(this)
     class(log_test), intent(inout) :: this
-    character :: answer
     write(*,*)
     write(*,*) 'The portion of the following messages surrounded by "<" and ">" should'
     write(*,*) 'be bold and have the colour which is named on the right.'
@@ -198,10 +197,6 @@ contains
       call l%error('test_colours','This should be red')
       call l%fatal('test_colours','This should have a red background')
     end associate
-    write(*,*) 'Type "y" if this is the case.'
-    read(*,*) answer
-    if (answer == 'Y') answer = 'y'
-    @assertEqual('y',answer,message='Incorrect colours used for messages.')
   end subroutine test_colours
   
 end module logging_tests
