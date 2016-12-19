@@ -1,0 +1,91 @@
+sudo: false
+
+language: c
+
+os:
+  - linux
+
+env:
+  global:
+    - GH_REF: github.com/Fortran-FOSS-Programmers/flogging
+    - ENCRYPTION_LABEL: "59525d4507cc"
+    - COMMIT_AUTHOR_EMAL: "cmacmackin@gmail.com
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-5
+      - gfortran-5
+      - python-pip
+      - python-virtualenv
+      - graphviz
+
+cache:
+  apt: true
+  pip: true
+  directories:
+    - $HOME/.cache/pip
+    - $HOME/.local
+
+install:
+  - export LOCAL_ROOT=$HOME/.local
+  - export LOCAL_BIN=$LOCAL_ROOT/bin
+  - export LOCAL_LIB=$LOCAL_ROOT/lib
+  - export LOCAL_INC=$LOCAL_ROOT/include
+  - export PATH=$LOCAL_BIN:/usr/local/bin:/usr/bin:$PATH
+  - if [ ! -d $HOME/venv ]; then virtualenv $HOME/venv; fi
+  - if [ -e $LOCAL_BIN/gcov ]; then rm $LOCAL_BIN/gcov; fi
+  - ln -s `which gcov-5` $LOCAL_BIN/gcov
+  - if [ -e $LOCAL_BIN/gfortran ]; then rm $LOCAL_BIN/gfortran; fi
+  - ln -s `which gfortran-5` $LOCAL_BIN/gfortran
+#  - source $HOME/venv/bin/activate
+  - pip install --user --upgrade graphviz
+  - pip install --user --upgrade ford && ford --version
+  - pip install --user --upgrade ghp-import
+  - pip install --user --upgrade codecov
+  - pip install --user --upgrade FoBiS.py
+  - |
+    if [ ! -d $HOME/pFUnit ]; then
+      git clone git://git.code.sf.net/p/pfunit/code $HOME/pFUnit
+      cd $HOME/pFUnit
+    else
+      cd $HOME/pFUnit
+      git pull
+    fi
+  - export F90_VENDOR=GNU
+  - export F90=gfortran-5
+  - make tests
+  - make install INSTALL_DIR=$LOCAL_BIN/pfunit-serial
+  - export PFUNIT=$LOCAL_BIN/pfunit-serial
+  - cd -
+  - |
+    if [ ! -d $HOME/face ]; then
+      git clone https://github.com/szaghi/FACE $HOME/face
+      cd $HOME/pFUnit
+    else
+      cd $HOME/face
+      git pull
+    fi
+  - FoBiS.py build -mode face-static-gnu
+  - cp `FoBiS.py rule -mode face-static-gnu -get_output_name` $LOCAL_LIB
+  - cp `FoBiS.py rule -mode face-static-gnue -get build_dir`/mod/face.mod $LOCAL_INC
+  - cd -
+
+script:
+  - FoBiS.py build -mode gnu-static -dlib ${LOCAL_LIB} -i ${LOCAL_INC} -coverage
+  - |
+    for f in tests/*.pf
+    do
+        $(PFUNIT)/bin/pFUnitParser.py $f ${f%.*}.F90
+    done
+  - ln -s ${PFUNIT}/include/driver.F90 tests/
+  - FoBiS.py build -mode tests -coverage
+  - `FoBiS.py rule -mode tests -get_output_name`
+
+after_success:
+  - echo "SUCCESS!"
+  - codecov
+  - ./deploy.sh
+

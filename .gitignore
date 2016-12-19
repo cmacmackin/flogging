@@ -34,3 +34,8 @@
 *.gcno
 *.gcov
 tests.x
+
+doc/
+build/
+tests_build/
+outputfile.log
