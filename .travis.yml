@@ -83,7 +83,7 @@ script:
 
 after_success:
   - echo "SUCCESS!"
-  - gcov $(FoBiS.py rule -mode gnu-static -get build_dir)/$(FoBiS.py rule -mode gnu-static -get obj_dir)/*.gcno -pb
+  - gcov $(FoBiS.py rule -mode gnu-static -get build_dir)/$(FoBiS.py rule -mode gnu-static -get obj_dir)/*.gcno -p
   - codecov -X gcov
   - ./deploy.sh
 
