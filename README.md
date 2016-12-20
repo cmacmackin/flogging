@@ -162,7 +162,9 @@ will not work elsewhere without modification.
 ##To Do
 
 - Make thread-safe
+- Make IO asynchronous
 - Make useful for SIMD parallel programming architectures
+- Allow user to ask to print directly to the IO unit(s)
 - Allow user to specify a custom format for log messages
 
 
