@@ -42,7 +42,7 @@ recommended that they use the `master_logger` object provided in the
 `logger_mod` module. This way, multiple libraries can make calls to
 the same logger and all information will end up in the same log file.
 
-##Usage
+###Usage
 
 Before using the master logger, `logger_init` must be called to set
 the logging file and what priority messages will be printed. The
@@ -101,7 +101,8 @@ end program logging_example
 
 This produces the following output to the screen.
 
-![Output from the example program above](https://github.com/cmacmackin/flogging/blob/master/sample-output.png)
+![Output from the example program above](./media/sample-output.png)
+
 Note that debug information is not displayed, as its priority falls
 below the default threshold for this.
 
