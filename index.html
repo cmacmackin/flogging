@@ -149,6 +149,19 @@ Python. It is meant to be used for providing warnings, error messages,
 debug information, or routine output which should be logged. It is not
 ideal for all output, such as that used to prompt the user for input.</p>
 <h2>Documentation</h2>
+<p>Often in software it is desirable to print output to the screen and to
+a log-file simultaneously. Furthermore, it is often useful to 
+to vary the amount of output depending on verbosity settings. These
+requirements tend to result in at least four lines of coding being
+needed to output even a single line of information, and more if, e.g.,
+the time of the IO is to be included in the information.</p>
+<p>The solution to this is a logging library. This library encapsulates
+in its procedures all of the logic needed to accomplish the above
+requirements. At the start of execution, it can be told how verbose it
+should be and then will be able to handle all decisions about what
+should be printed. Furthermore, it will include in the message a
+time-stamp, a colour-coded label for the type of message, and it
+provide a standard format for messages. </p>
 <p>Flogger provides a module called <code>logger_mod</code>, which implements an
 object called a <code>logger</code>. This contains methods for outputting the
 following types of messages:</p>
@@ -247,7 +260,7 @@ package manager. It can be installed with the command</p>
 </pre></div>
 
 
-<p>If compiling manually, you will need to have Stefano Zaghi's
+<p>If compiling manually, you will need to have the
 <a href="https://github.com/szaghi/FACE">FACE</a> library installed. It is
 recommended that you compile Flogging using the
 <a href="https://github.com/szaghi/FoBiS">FoBiS.py</a> tool, 
@@ -266,8 +279,14 @@ the <code>.mod</code> file for FACE.</p>
 <p>A makefile is provided with this repository, but is not officially
 supported. It has been configured for the developer's computer and
 will not work elsewhere without modification.</p>
+<h2>To Do</h2>
+<ul>
+<li>Make thread-safe</li>
+<li>Make useful for SIMD parallel programming architectures</li>
+<li>Allow user to specify a custom format for log messages</li>
+</ul>
 <h2>License</h2>
-<p>FIAT is licensed under the GNU Lesser General Public License (LGPL) v3.0 or
+<p>Flogging is licensed under the GNU Lesser General Public License (LGPL) v3.0 or
 later. The terms are provided in the file <code>LICENSE</code>. The LGPL make reference
 to the GNU General Public License (GPL), which is provided in the file <code>GPL</code>.
 In brief, the LGPL allows this library to be linked to software under any
