@@ -174,7 +174,7 @@ standard error.</p>
 recommended that they use the <code>master_logger</code> object provided in the
 <code>logger_mod</code> module. This way, multiple libraries can make calls to
 the same logger and all information will end up in the same log file.</p>
-<h2>Usage</h2>
+<h3>Usage</h3>
 <p>Before using the master logger, <code>logger_init</code> must be called to set
 the logging file and what priority messages will be printed. The
 call signature is</p>
@@ -231,8 +231,8 @@ arguments:</p>
 
 
 <p>This produces the following output to the screen.</p>
-<p><img alt="Output from the example program above" src="https://github.com/cmacmackin/flogging/blob/master/sample-output.png">
-Note that debug information is not displayed, as its priority falls
+<p><img alt="Output from the example program above" src="./media/sample-output.png"></p>
+<p>Note that debug information is not displayed, as its priority falls
 below the default threshold for this.</p>
 <h3>API</h3>
 <p>Detailed <a href="https://cmacmackin.github.io/flogging">API documentation</a> is
