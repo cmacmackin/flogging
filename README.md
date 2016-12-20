@@ -15,6 +15,21 @@ ideal for all output, such as that used to prompt the user for input.
 
 ##Documentation
 
+Often in software it is desirable to print output to the screen and to
+a log-file simultaneously. Furthermore, it is often useful to 
+to vary the amount of output depending on verbosity settings. These
+requirements tend to result in at least four lines of coding being
+needed to output even a single line of information, and more if, e.g.,
+the time of the IO is to be included in the information.
+
+The solution to this is a logging library. This library encapsulates
+in its procedures all of the logic needed to accomplish the above
+requirements. At the start of execution, it can be told how verbose it
+should be and then will be able to handle all decisions about what
+should be printed. Furthermore, it will include in the message a
+time-stamp, a colour-coded label for the type of message, and it
+provide a standard format for messages. 
+
 Flogger provides a module called `logger_mod`, which implements an
 object called a `logger`. This contains methods for outputting the
 following types of messages:
@@ -123,7 +138,7 @@ package manager. It can be installed with the command
 spack install flogging
 ```
 
-If compiling manually, you will need to have Stefano Zaghi's
+If compiling manually, you will need to have the
 [FACE](https://github.com/szaghi/FACE) library installed. It is
 recommended that you compile Flogging using the
 [FoBiS.py](https://github.com/szaghi/FoBiS) tool, 
@@ -144,9 +159,16 @@ supported. It has been configured for the developer's computer and
 will not work elsewhere without modification.
 
 
+##To Do
+
+- Make thread-safe
+- Make useful for SIMD parallel programming architectures
+- Allow user to specify a custom format for log messages
+
+
 ##License
 
-FIAT is licensed under the GNU Lesser General Public License (LGPL) v3.0 or
+Flogging is licensed under the GNU Lesser General Public License (LGPL) v3.0 or
 later. The terms are provided in the file `LICENSE`. The LGPL make reference
 to the GNU General Public License (GPL), which is provided in the file `GPL`.
 In brief, the LGPL allows this library to be linked to software under any
