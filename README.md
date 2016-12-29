@@ -141,7 +141,7 @@ spack install flogging
 If compiling manually, you will need to have the
 [FACE](https://github.com/szaghi/FACE) library installed. It is
 recommended that you compile Flogging using the
-[FoBiS.py](https://github.com/szaghi/FoBiS) tool, 
+[FoBiS.py](https://github.com/szaghi/FoBiS) (&ge;v2.2.2) tool, 
 which can be installed from
 [PyPI](https://pypi.python.org/pypi/FoBiS.py/). The provided `fobos`
 configuration file allows the library to be compiled with the command
