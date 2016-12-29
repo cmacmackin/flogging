@@ -5,13 +5,13 @@ modes = gnu-shared gnu-static intel-shared intel-static tests
 $CFLAGS_GNU = -c -Ofast
 $LFLAGS_GNU = -Ofast
 $CFLAGS_GNU_SHARED = -fPIC
-$LFLAGS_GNU_SHARED = -shared
+$LFLAGS_GNU_SHARED = -Wl,--no-undefined -Wl,-soname,libflogging.so.1
 $CFLAGS_INTEL = -c -fast
 $LFLAGS_INTEL = -fast
 $CFLAGS_INTEL_SHARED = -fpic
-$LFLAGS_INTEL_SHARED = -shared
+$LFLAGS_INTEL_SHARED = -Wl,--no-undefined -Wl,-soname,libflogging.so.1
 $STATIC_LIB = libflogging.a
-$SHARED_LIB = libflogging.so
+$SHARED_LIB = libflogging.so.1.0.1
 
 [gnu-shared]
 template = template-build
@@ -20,16 +20,16 @@ compiler = gnu
 mklib = shared
 cflags = $CFLAGS_GNU $CFLAGS_GNU_SHARED
 lflags = $LFLAGS_GNU $LFLAGS_GNU_SHARED
-output = libflogging.so
+output = $SHARED_LIB
 
 [gnu-static]
 template = template-build
 help = Compile to a static library using gfortran
 compiler = gnu
 mklib = static
-cflags = $CFLAGS_GNU $CFLAGS_GNU_STATIC
-lflags = $LFLAGS_GNU $LFLAGS_GNU_STATIC
-output = libflogging.a
+cflags = $CFLAGS_GNU
+lflags = $LFLAGS_GNU
+output = $STATIC_LIB
 
 [intel-shared]
 template = template-build
@@ -38,16 +38,16 @@ compiler = intel
 mklib = shared
 cflags = $CFLAGS_INTEL $CFLAGS_INTEL_SHARED
 lflags = $LFLAGS_INTEL $LFLAGS_INTEL_SHARED
-output = libflogging.so
+output = $SHARED_LIB
 
 [intel-static]
 template = template-build
 help = Compile to a static library using ifort
 compiler = intel
 mklib = static
-cflags = $CFLAGS_INTEL $CFLAGS_INTEL_STATIC
-lflags = $LFLAGS_INTEL $LFLAGS_INTEL_STATIC
-output = libflogging.a
+cflags = $CFLAGS_INTEL
+lflags = $LFLAGS_INTEL
+output = $STATIC_LIB
 
 [tests]
 help = Builds the unit tests. Not guaranteed to work.
