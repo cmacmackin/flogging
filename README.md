@@ -13,7 +13,7 @@ debug information, or routine output which should be logged. It is not
 ideal for all output, such as that used to prompt the user for input.
 
 
-##Documentation
+## Documentation
 
 Often in software it is desirable to print output to the screen and to
 a log-file simultaneously. Furthermore, it is often useful to 
@@ -57,7 +57,7 @@ recommended that they use the `master_logger` object provided in the
 `logger_mod` module. This way, multiple libraries can make calls to
 the same logger and all information will end up in the same log file.
 
-###Usage
+### Usage
 
 Before using the master logger, `logger_init` must be called to set
 the logging file and what priority messages will be printed. The
@@ -89,7 +89,7 @@ arguments:
 - **message**: A character string containing the message to be
   printed.
 
-###Example
+### Example
 
 ```fortran
 program logging_example
@@ -121,14 +121,14 @@ This produces the following output to the screen.
 Note that debug information is not displayed, as its priority falls
 below the default threshold for this.
 
-###API
+### API
 
 Detailed [API documentation](https://cmacmackin.github.io/flogging) is
 available in the Github pages of this repository and can be generated
 locally using the [FORD](https://github.com/cmacmackin/ford) tool. 
 
 
-##Installation
+## Installation
 
 The easiest way to install Flogging is via the
 [FLATPack](https://github.com/Fortran-FOSS-Programmers/FLATPack)
@@ -159,7 +159,7 @@ supported. It has been configured for the developer's computer and
 will not work elsewhere without modification.
 
 
-##To Do
+## To Do
 
 - Make thread-safe
 - Make IO asynchronous
@@ -168,7 +168,7 @@ will not work elsewhere without modification.
 - Allow user to specify a custom format for log messages
 
 
-##License
+## License
 
 Flogging is licensed under the GNU Lesser General Public License (LGPL) v3.0 or
 later. The terms are provided in the file `LICENSE`. The LGPL make reference
